@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programas em R</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Exemplos de Programas em R</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="instalacao.html">Instalação</a></li>
+                <li><a href="informacoes.html">Informações sobre R</a></li>
+                <li><a href="programas.html">Programas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+      <section class="video">
+        <h2>Vídeo</h2>
+        <video controls>
+            <source src="videos/tutorial-informacoes.mp4" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+        </video>
+    </section>
+        <section id="exemplo">
+            <h2>Exemplo: Cálculo de Fatorial e Verificação de Número Primo</h2>
+            <p>Este exemplo mostra como calcular o fatorial de um número e verificar se ele é primo:</p>
+            <pre><code class="language-r"># Função para calcular o fatorial
+fatorial <- function(n) {
+  if(n == 0) {
+    return(1)
+  } else {
+    return(n * fatorial(n - 1))
+  }
+}
+
+# Função para verificar se um número é primo
+eh_primo <- function(n) {
+  if(n <= 1) {
+    return(FALSE)
+  }
+  for(i in 2:sqrt(n)) {
+    if(n %% i == 0) {
+      return(FALSE)
+    }
+  }
+  return(TRUE)
+}
+
+# Testando as funções
+numero <- 5
+cat("O fatorial de", numero, "é", fatorial(numero), "\n")
+if(eh_primo(numero)) {
+  cat(numero, "é um número primo.\n")
+} else {
+  cat(numero, "não é um número primo.\n")
+}</code></pre>
+        </section>
+    </main>
+</body>
+</html>

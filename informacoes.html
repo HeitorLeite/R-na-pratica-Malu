@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes sobre R</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Detalhes sobre a Linguagem R</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="instalacao.html">Instalação</a></li>
+                <li><a href="informacoes.html">Informações sobre R</a></li>
+                <li><a href="programas.html">Programas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="video">
+            <h2>Vídeo</h2>
+            <video controls>
+                <source src="videos/tutorial-informacoes.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+        </section>
+        <section id="historia">
+            <h2>Origem da Linguagem R</h2>
+            <p>A linguagem R foi desenvolvida por Ross Ihaka e Robert Gentleman na Universidade de Auckland, Nova Zelândia, no início dos anos 90. Inspirada na linguagem S, R tornou-se amplamente utilizada para análise estatística e ciência de dados, evoluindo com contribuições de uma vasta comunidade global.</p>
+        </section>
+        <section id="sintaxe">
+            <h2>Fundamentos da Sintaxe</h2>
+            <p>A sintaxe de R é intuitiva e acessível para iniciantes. Exemplos básicos incluem:</p>
+            <ul>
+                <li><strong>Atribuição:</strong> <code>x <- 10</code></li>
+                <li><strong>Operações Matemáticas:</strong> <code>total <- x + 5</code></li>
+                <li><strong>Criar Vetores:</strong> <code>numeros <- c(1, 2, 3, 4, 5)</code></li>
+                <li><strong>Funções:</strong> <code>media <- mean(numeros)</code></li>
+            </ul>
+            <p>Essa linguagem flexível é poderosa para manipulação de dados e criação de visualizações complexas.</p>
+        </section>
+        <section id="variaveis">
+            <h2>Variáveis</h2>
+            <p>Em R, as variáveis são utilizadas para armazenar dados que podem ser utilizados e manipulados posteriormente. Exemplos incluem:</p>
+            <ul>
+                <li><strong>Números:</strong> <code>x <- 42</code></li>
+                <li><strong>Textos:</strong> <code>nome <- "R Linguagem"</code></li>
+                <li><strong>Vetores:</strong> <code>idades <- c(25, 30, 35, 40)</code></li>
+                <li><strong>Listas:</strong> <code>info <- list(nome="Ana", idade=28)</code></li>
+            </ul>
+        </section>
+        <section id="funcoes">
+            <h2>Funções</h2>
+            <p>Funções em R são blocos de código reutilizáveis que executam tarefas específicas. Você pode usar funções integradas ou criar suas próprias:</p>
+            <ul>
+                <li><strong>Funções Integradas:</strong> <code>sqrt(16)</code> (calcula a raiz quadrada de 16)</li>
+                <li><strong>Definindo Funções:</strong></li>
+            </ul>
+            <pre><code>minha_funcao <- function(a, b) {
+    return(a + b)
+}
+resultado <- minha_funcao(5, 3)</code></pre>
+        </section>
+        <section id="bibliotecas">
+            <h2>Bibliotecas</h2>
+            <p>Bibliotecas em R são coleções de funções e dados pré-compilados que você pode usar para estender as capacidades do R. Para usar uma biblioteca, você precisa carregá-la:</p>
+            <ul>
+                <li><strong>Carregar Biblioteca:</strong> <code>library(ggplot2)</code></li>
+                <li><strong>Instalar Biblioteca:</strong> <code>install.packages("ggplot2")</code></li>
+            </ul>
+        </section>
+        <section id="pacotes">
+            <h2>Pacotes Populares</h2>
+            <p>R possui uma rica coleção de pacotes que ampliam suas funcionalidades. Alguns dos mais utilizados incluem:</p>
+            <ul>
+                <li><strong>dplyr:</strong> Ferramentas para manipulação de dados.</li>
+                <li><strong>ggplot2:</strong> Criação de gráficos sofisticados.</li>
+                <li><strong>tidyr:</strong> Organização de dados em formatos estruturados.</li>
+                <li><strong>shiny:</strong> Desenvolvimento de aplicativos web interativos.</li>
+                <li><strong>caret:</strong> Funções para aprendizado de máquina.</li>
+            </ul>
+            <p>Esses pacotes são apenas uma amostra do vasto ecossistema de R, que continua a crescer com contribuições da comunidade.</p>
+        </section>
+        <section id="estrutura">
+            <h2>Estrutura da Linguagem R</h2>
+            <p>A linguagem R possui uma estrutura organizada em diversos componentes essenciais:</p>
+            <ul>
+                <li><strong>Ambiente:</strong> R é um ambiente interativo onde você pode executar código e visualizar resultados imediatamente.</li>
+                <li><strong>Objetos:</strong> Tudo em R é um objeto, incluindo números, vetores, funções e modelos.</li>
+                <li><strong>Vetores e Matrizes:</strong> Estruturas de dados fundamentais que permitem manipulações e cálculos eficientes.</li>
+                <li><strong>Data Frames:</strong> Estruturas de dados bidimensionais, semelhantes a tabelas, ideais para dados estatísticos.</li>
+                <li><strong>Listas:</strong> Coleções de objetos que podem ser de diferentes tipos e tamanhos.</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
