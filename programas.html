@@ -8,57 +8,124 @@
 </head>
 <body>
     <header>
-        <h1>Exemplos de Programas em R</h1>
+        <h1>Exemplo de Programas em R</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="instalacao.html">Instalação</a></li>
-                <li><a href="informacoes.html">Informações sobre R</a></li>
-                <li><a href="programas.html">Programas</a></li>
+              <li><a href="index.html">Início</a></li>
+              <li><a href="instalacao.html">Módulo 1</a></li>
+              <li><a href="informacoes.html">Módulo 2</a></li>
+              <li><a href="programas.html">Módulo 3</a></li>
             </ul>
         </nav>
     </header>
     <main>
-      <section class="video">
-        <h2>Vídeo</h2>
-        <video controls>
-            <source src="videos/tutorial-informacoes.mp4" type="video/mp4">
-            Seu navegador não suporta a tag de vídeo.
-        </video>
-    </section>
-        <section id="exemplo">
-            <h2>Exemplo: Cálculo de Fatorial e Verificação de Número Primo</h2>
-            <p>Este exemplo mostra como calcular o fatorial de um número e verificar se ele é primo:</p>
-            <pre><code class="language-r"># Função para calcular o fatorial
-fatorial <- function(n) {
-  if(n == 0) {
-    return(1)
-  } else {
-    return(n * fatorial(n - 1))
-  }
+        <section>
+            <h2>Exemplo: Conversão de moeda</h2>
+            <p>Este exemplo faz conversão de câmbio de moedas:</p>
+            <pre><code>
+# Funções de conversão para várias moedas
+converter_moeda <- function(valor, taxa_cambio) {
+  return(valor * taxa_cambio)
 }
 
-# Função para verificar se um número é primo
-eh_primo <- function(n) {
-  if(n <= 1) {
-    return(FALSE)
-  }
-  for(i in 2:sqrt(n)) {
-    if(n %% i == 0) {
-      return(FALSE)
+# Taxas de câmbio padrão (de BRL para outras moedas)
+taxas_cambio <- list(
+  "BRL para USD" = 0.18,
+  "BRL para EUR" = 0.17,
+  "BRL para GBP" = 0.14,
+  "BRL para JPY" = 28.991
+)
+
+# Bibliotecas necessárias
+library(ggplot2)
+
+# Inicializar contadores e armazenamento de dados
+contador_execucoes <- 0
+max_execucoes <- 4
+dados_resultados <- data.frame(Moeda = character(), Valor = numeric(), stringsAsFactors = FALSE)
+
+# Função principal
+main <- function() {
+  repeat {
+    cat("Escolha a moeda para a qual deseja converter:\n")
+    cat("1: BRL para USD\n")
+    cat("2: BRL para EUR\n")
+    cat("3: BRL para GBP\n")
+    cat("4: BRL para JPY\n")
+    cat("5: Sair\n")
+    
+    opcao <- as.integer(readline(prompt="Digite o número da opção: "))
+    
+    if (opcao == 5) {
+      cat("Saindo do programa...\n")
+      break
+    } else if (!(opcao %in% 1:4)) {
+      cat("Opção inválida! Tente novamente.\n")
+      next
     }
+    
+    moedas <- c("BRL para USD", "BRL para EUR", "BRL para GBP", "BRL para JPY")
+    moeda_selecionada <- moedas[opcao]
+    taxa_cambio <- taxas_cambio[[moeda_selecionada]]
+    
+    brl <- as.numeric(readline(prompt="Entre com o valor em BRL: "))
+    
+    resultado <- converter_moeda(brl, taxa_cambio)
+    print(paste(brl, "BRL é igual a", resultado, moeda_selecionada, "com uma taxa de câmbio de", taxa_cambio))
+    
+    # Armazenar resultados para o gráfico
+    dados_resultados <- rbind(dados_resultados, data.frame(Moeda = moeda_selecionada, Valor = resultado))
+    
+    # Incrementar contador de execuções
+    contador_execucoes <- contador_execucoes + 1
+    faltam_execucoes <- max_execucoes - contador_execucoes
+    print(paste("Faltam", faltam_execucoes, "execuções para gerar o gráfico."))
+    
+    # Verificar se é hora de gerar o gráfico
+    if (contador_execucoes %% max_execucoes == 0) {
+      # Gerar gráfico de barras verticais dos valores convertidos
+      grafico_convertidos <- ggplot(dados_resultados, aes(x = Moeda, y = Valor, fill = Moeda)) +
+        geom_bar(stat = "identity", width = 0.5, color = "white", alpha = 0.8) +
+        labs(title = "Valores convertidos", x = "Moeda", y = "Valor Convertido") +
+        theme_minimal() +
+        theme(
+          plot.title = element_text(size = 8, face = "bold", color = "white"),
+          axis.title.x = element_text(size = 5, color = "white"),
+          axis.title.y = element_text(size = 5, color = "white"),
+          axis.text.x = element_text(size = 5, color = "white"),
+          axis.text.y = element_text(size = 5, color = "white"),
+          legend.title = element_blank(),
+          legend.position = "none",
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.background = element_rect(fill = "black", color = "black"),
+          plot.background = element_rect(fill = "black", color = "black"),
+          axis.line = element_line(color = "white"),
+          axis.ticks = element_line(color = "white")
+        )
+      
+      # Salvar o gráfico como PNG
+      nome_arquivo <- paste("conversoes_moeda_", contador_execucoes / max_execucoes, ".png", sep = "")
+      ggsave(nome_arquivo, plot = grafico_convertidos, width = 800, height = 600, units = "px")
+      
+      # Resetar dados de resultados para próximas execuções
+      dados_resultados <- data.frame(Moeda = character(), Valor = numeric(), stringsAsFactors = FALSE)
+      contador_execucoes <- 0
+    }
+    
+    # Perguntar ao usuário se deseja continuar
+    continuar <- readline(prompt="Deseja converter mais valores? (s/n): ")
+    if (tolower(continuar) != "s") {
+      break
+    }
+    cat("\n")
   }
-  return(TRUE)
+  print("Programa encerrado.")
 }
 
-# Testando as funções
-numero <- 5
-cat("O fatorial de", numero, "é", fatorial(numero), "\n")
-if(eh_primo(numero)) {
-  cat(numero, "é um número primo.\n")
-} else {
-  cat(numero, "não é um número primo.\n")
-}</code></pre>
+# Chama a função principal
+main()
+              </code></pre>
         </section>
     </main>
 </body>
