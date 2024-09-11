@@ -3,129 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programas em R</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Domine R - Exemplos de Programas</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <header>
-        <h1>Exemplo de Programas em R</h1>
+        <h1>Exemplo de Programa em Ruby</h1>
         <nav>
             <ul>
-              <li><a href="index.html">Início</a></li>
-              <li><a href="instalacao.html">Módulo 1</a></li>
+              <li><a href="index.html">Principal</a></li>
+              <li><a href="instalacao.html">Modulo 1</a></li>
               <li><a href="informacoes.html">Módulo 2</a></li>
               <li><a href="programas.html">Módulo 3</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section>
-            <h2>Exemplo: Conversão de moeda</h2>
-            <p>Este exemplo faz conversão de câmbio de moedas:</p>
+        <section class="programa-1">
+            <h2>Jogo da Forca em Ruby</h2>
+            <h2>Como Funciona:</h2>
+            <ul>
+                <li><strong>Palavra Secreta:</strong> Uma palavra é escolhida aleatoriamente (você pode criar uma lista de palavras e escolher uma aleatoriamente).</li>
+                <li><strong>Letras Acertadas:</strong> Inicialmente, todas as letras são representadas por underscores.</li>
+                <li><strong>Tentativas:</strong> O jogador tem um número limitado de tentativas.</li>
+                <li><strong>Chute:</strong> O jogador chuta uma letra.</li>
+                <li><strong>Verificação:</strong> Se a letra estiver na palavra, ela é revelada. Caso contrário, o número de tentativas diminui.</li>
+                <li><strong>Condição de Vitória:</strong> Se todas as letras forem descobertas, o jogador vence.</li>
+                <li><strong>Condição de Derrota:</strong> Se as tentativas chegarem a zero, o jogador perde.</li>
+            </ul>
+
+            <h2>Para Executar:</h2>
+            <ol>
+                <li>Salve o código em um arquivo com extensão .rb (por exemplo, forca.rb).</li>
+                <li>Abra seu terminal e navegue até o diretório onde salvou o arquivo.</li>
+                <li>Execute o comando: <code>ruby forca.rb</code></li>
+            </ol>
+            
             <pre><code>
-# Funções de conversão para várias moedas
-converter_moeda <- function(valor, taxa_cambio) {
-  return(valor * taxa_cambio)
-}
+# Palavra secreta
+palavra_secreta = "ruby"
 
-# Taxas de câmbio padrão (de BRL para outras moedas)
-taxas_cambio <- list(
-  "BRL para USD" = 0.18,
-  "BRL para EUR" = 0.17,
-  "BRL para GBP" = 0.14,
-  "BRL para JPY" = 28.991
-)
+# Inicializa as letras acertadas com underscores
+letras_acertadas = ["_" * palavra_secreta.length]
 
-# Bibliotecas necessárias
-library(ggplot2)
+# Número máximo de tentativas
+tentativas = 6
 
-# Inicializar contadores e armazenamento de dados
-contador_execucoes <- 0
-max_execucoes <- 4
-dados_resultados <- data.frame(Moeda = character(), Valor = numeric(), stringsAsFactors = FALSE)
+while tentativas > 0
+  puts "Palavra: #{letras_acertadas.join(' ')}"
+  puts "Tentativas restantes: #{tentativas}"
 
-# Função principal
-main <- function() {
-  repeat {
-    cat("Escolha a moeda para a qual deseja converter:\n")
-    cat("1: BRL para USD\n")
-    cat("2: BRL para EUR\n")
-    cat("3: BRL para GBP\n")
-    cat("4: BRL para JPY\n")
-    cat("5: Sair\n")
-    
-    opcao <- as.integer(readline(prompt="Digite o número da opção: "))
-    
-    if (opcao == 5) {
-      cat("Saindo do programa...\n")
-      break
-    } else if (!(opcao %in% 1:4)) {
-      cat("Opção inválida! Tente novamente.\n")
-      next
-    }
-    
-    moedas <- c("BRL para USD", "BRL para EUR", "BRL para GBP", "BRL para JPY")
-    moeda_selecionada <- moedas[opcao]
-    taxa_cambio <- taxas_cambio[[moeda_selecionada]]
-    
-    brl <- as.numeric(readline(prompt="Entre com o valor em BRL: "))
-    
-    resultado <- converter_moeda(brl, taxa_cambio)
-    print(paste(brl, "BRL é igual a", resultado, moeda_selecionada, "com uma taxa de câmbio de", taxa_cambio))
-    
-    # Armazenar resultados para o gráfico
-    dados_resultados <- rbind(dados_resultados, data.frame(Moeda = moeda_selecionada, Valor = resultado))
-    
-    # Incrementar contador de execuções
-    contador_execucoes <- contador_execucoes + 1
-    faltam_execucoes <- max_execucoes - contador_execucoes
-    print(paste("Faltam", faltam_execucoes, "execuções para gerar o gráfico."))
-    
-    # Verificar se é hora de gerar o gráfico
-    if (contador_execucoes %% max_execucoes == 0) {
-      # Gerar gráfico de barras verticais dos valores convertidos
-      grafico_convertidos <- ggplot(dados_resultados, aes(x = Moeda, y = Valor, fill = Moeda)) +
-        geom_bar(stat = "identity", width = 0.5, color = "white", alpha = 0.8) +
-        labs(title = "Valores convertidos", x = "Moeda", y = "Valor Convertido") +
-        theme_minimal() +
-        theme(
-          plot.title = element_text(size = 8, face = "bold", color = "white"),
-          axis.title.x = element_text(size = 5, color = "white"),
-          axis.title.y = element_text(size = 5, color = "white"),
-          axis.text.x = element_text(size = 5, color = "white"),
-          axis.text.y = element_text(size = 5, color = "white"),
-          legend.title = element_blank(),
-          legend.position = "none",
-          panel.grid.major = element_blank(),
-          panel.grid.minor = element_blank(),
-          panel.background = element_rect(fill = "black", color = "black"),
-          plot.background = element_rect(fill = "black", color = "black"),
-          axis.line = element_line(color = "white"),
-          axis.ticks = element_line(color = "white")
-        )
-      
-      # Salvar o gráfico como PNG
-      nome_arquivo <- paste("conversoes_moeda_", contador_execucoes / max_execucoes, ".png", sep = "")
-      ggsave(nome_arquivo, plot = grafico_convertidos, width = 800, height = 600, units = "px")
-      
-      # Resetar dados de resultados para próximas execuções
-      dados_resultados <- data.frame(Moeda = character(), Valor = numeric(), stringsAsFactors = FALSE)
-      contador_execucoes <- 0
-    }
-    
-    # Perguntar ao usuário se deseja continuar
-    continuar <- readline(prompt="Deseja converter mais valores? (s/n): ")
-    if (tolower(continuar) != "s") {
-      break
-    }
-    cat("\n")
-  }
-  print("Programa encerrado.")
-}
+  print "Digite uma letra: "
+  chute = gets.chomp.downcase
 
-# Chama a função principal
-main()
-              </code></pre>
+  if palavra_secreta.include?(chute)
+    # Atualiza as letras acertadas
+    palavra_secreta.split('').each_with_index do |letra, indice|
+      letras_acertadas[0][indice] = chute if letra == chute
+    end
+  else
+    tentativas -= 1
+    puts "Letra não encontrada!"
+  end
+
+  # Verifica se o jogador ganhou
+  if letras_acertadas.join('') == palavra_secreta
+    puts "Parabéns, você venceu!"
+    break
+  end
+end
+
+unless letras_acertadas.join('') == palavra_secreta
+  puts "Você perdeu! A palavra era: #{palavra_secreta}"
+end
+            </code></pre>
         </section>
     </main>
 </body>

@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R na Prática - Instalação</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Guia de Instalação do Ruby</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <header>
-        <h1>Bem-vindo ao R na Prática</h1>
+        <h1>Configuração do Ambiente Ruby</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html">Principal</a></li>
                 <li><a href="instalacao.html">Módulo 1</a></li>
                 <li><a href="informacoes.html">Módulo 2</a></li>
                 <li><a href="programas.html">Módulo 3</a></li>
@@ -19,40 +19,63 @@
         </nav>
     </header>
     <main>
-        <section class="video-tutorial">
-            <h2>Vídeo</h2>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/x5zFQjuPQhs?si=VL8fYUfRiovp_7qG" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </section>
-        <section id="instalacao">
-            <h2>Como Instalar R</h2>
-            <p>Seguindo estes passos, você poderá instalar R no seu computador de forma simples:</p>
+
+        <section class="passo-a-passo">
+            <h2>Instalação do Ruby no Windows</h2>
+            <p>Este guia irá te ajudar a instalar o Ruby no seu ambiente Windows utilizando o RubyInstaller.</p>
+            
+            <h3>Passo 1: Baixar o RubyInstaller</h3>
+            <p>Baixe a versão mais recente do RubyInstaller para o seu sistema operacional.</p>
             <ol>
-                <li><strong>Visite o site oficial do R:</strong> Acesse <a href="https://cran.r-project.org/" target="_blank">https://cran.r-project.org/</a>.</li>
-                <li><strong>Escolha seu sistema operacional:</strong> Clique no link correspondente ao seu sistema operacional (Windows, macOS, ou Linux).</li>
-                <li><strong>Baixe o instalador:</strong> 
-                    <ul>
-                        <li><strong>Windows:</strong> Clique em "Download R for Windows" e depois em "base". Em seguida, clique em "Download R 4.x.x for Windows" (a versão pode variar).</li>
-                        <li><strong>macOS:</strong> Clique em "Download R for macOS" e escolha a versão apropriada para sua versão do macOS.</li>
-                        <li><strong>Linux:</strong> Siga as instruções específicas para sua distribuição Linux, geralmente envolvendo comandos no terminal.</li>
-                    </ul>
-                </li>
-                <li><strong>Execute o instalador:</strong> 
-                    <ul>
-                        <li><strong>Windows:</strong> Após o download, abra o arquivo .exe e siga as instruções do instalador. Aceite os termos de licença e escolha as configurações padrão.</li>
-                        <li><strong>macOS:</strong> Abra o arquivo .pkg baixado e siga as instruções do instalador. Aceite os termos de licença e continue com as configurações padrão.</li>
-                        <li><strong>Linux:</strong> Siga as instruções de instalação específicas para sua distribuição, que podem incluir comandos como `sudo apt-get install r-base` (para distribuições baseadas no Debian, como Ubuntu).</li>
-                    </ul>
-                </li>
-                <li><strong>Verifique a instalação:</strong> Após a instalação, abra o VSCode
-                    <ul>
-                        <li>Vá em extensões pesquise por R e instale o primeiro que vai aparecer, agora crie um arquivo de teste em .r.</li>
-                        
-                    </ul>
-                </li>
-                <li><strong>Comece a usar R:</strong> Agora é só testar com algum programa básico, se a mensagem aparecer significa que funcionou.</li>
+                <li>Acesse o site oficial: <a href="https://rubyinstaller.org/downloads/" target="_blank">RubyInstaller</a>.</li>
+                <li>Baixe a versão mais adequada ao seu sistema (32 ou 64 bits).</li>
             </ol>
+
+            <h3>Passo 2: Executar o Instalador</h3>
+            <p>Depois de baixar o RubyInstaller, siga os passos abaixo para concluir a instalação:</p>
+            <ol>
+                <li>Execute o instalador baixado.</li>
+                <li>Siga as instruções, aceitando os termos de uso.</li>
+                <li>Marque a opção para adicionar o Ruby ao PATH.</li>
+            </ol>
+
+            <h3>Passo 3: Verificar a Instalação</h3>
+            <p>Abra o prompt de comando para verificar se a instalação foi bem-sucedida:</p>
+            <ol>
+                <li>Pressione Windows + R, digite <code>cmd</code> e pressione Enter.</li>
+                <li>Digite <code>ruby -v</code> no terminal e pressione Enter.</li>
+                <li>Se tudo estiver correto, a versão do Ruby instalada será exibida.</li>
+            </ol>
+
+            <h3>Passo 4: Instalar o Bundler (Opcional)</h3>
+            <p>Se desejar gerenciar pacotes e dependências do Ruby, você pode instalar o Bundler:</p>
+            <ol>
+                <li>No prompt de comando, digite: <code>gem install bundler</code> e pressione Enter.</li>
+            </ol>
+
+            <h3>Passo 5: Configurar um Editor de Código</h3>
+            <p>Recomendamos o uso de um editor de código como Visual Studio Code, Sublime Text ou Atom:</p>
+            <ol>
+                <li>Baixe o editor escolhido e instale extensões de suporte ao Ruby (como destaque de sintaxe e depuração).</li>
+            </ol>
+
+            <h3>Passo 6: Criar e Executar seu Primeiro Programa</h3>
+            <p>Agora você pode criar seu primeiro programa Ruby:</p>
+            <ol>
+                <li>Abra o editor de código e crie um novo arquivo com a extensão <code>.rb</code> (ex: <code>hello.rb</code>).</li>
+                <li>Escreva o seguinte código: <code>puts "Hello, world!"</code>.</li>
+                <li>Abra o prompt de comando, navegue até o diretório onde o arquivo foi salvo e execute: <code>ruby hello.rb</code>.</li>
+                <li>Se tudo estiver correto, a mensagem "Hello, world!" será exibida.</li>
+            </ol>
+        </section>
+
+        <section class="recursos-adicionais">
+            <h2>Recursos Adicionais</h2>
+            <ul>
+                <li><a href="https://www.ruby-lang.org/en/documentation/" target="_blank">Documentação Oficial do Ruby</a></li>
+                <li><a href="https://rubyinstaller.org/" target="_blank">RubyInstaller</a></li>
+                <li><a href="https://bundler.io/" target="_blank">Bundler</a></li>
+            </ul>
         </section>
     </main>
 </body>
